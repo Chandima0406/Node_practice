@@ -1,6 +1,6 @@
 import { log, error } from "node:console";
-//import { appendFile, readFile, rm } from "node:fs";
-import { readFile, appendFile, rm, writeFile } from "node:fs/promises";
+import { appendFile, readFile, rm, readFileSync, writeFileSync, appendFileSync, rmSync } from "node:fs";
+// import { readFile, appendFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 //import { writeFile } from "node:fs";
@@ -9,7 +9,25 @@ import { Buffer } from "buffer";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/// promise API example
+/////////////////// sync Api
+// readFileSync
+const data = readFileSync(join(__dirname, "read.txt"), { encoding: "utf-8" });
+log(data);
+
+// writeFilesync
+writeFileSync(join(__dirname, "message.txt"), "Hello sri lanka", {
+encoding: "utf-8",
+});
+
+// appendFileSync
+appendFileSync(join(__dirname, "message.txt"), "\nHello chandima!", {
+  encoding: "utf-8",
+});
+
+//rm using sync
+rmSync(join(__dirname, "write.txt"), );
+
+////////////////// promise API example
 // readFile
 // readFile(join(__dirname, "read.txt"), { encoding: "utf-8" })
 //   .then((data) => {
@@ -37,16 +55,16 @@ const __dirname = dirname(__filename);
 //       error(err);
 //     });
 
-    // remove using rm
-    rm(join(__dirname, "myname.txt"))
-      .then(() => {
-        log("File removed successfully.");
-      })
-      .catch((err) => {
-        log("error remove file:", err);
-      });
+// remove using rm
+// rm(join(__dirname, "myname.txt"))
+//   .then(() => {
+//     log("File removed successfully.");
+//   })
+//   .catch((err) => {
+//     log("error remove file:", err);
+//   });
 
-/////// callcack API example
+/////////////////////////// callcack API example
 // readFile, writeFile, appendFile, rm
 
 // readFile(join(__dirname, "read.txt"), { encoding: "utf-8" }, (err, data) => {
@@ -75,7 +93,6 @@ const __dirname = dirname(__filename);
 //   //log("File written successfully.");
 // });
 
-
 // // append using join
 // appendFile(join(__dirname, "message.txt"), "\nHello !", (err) => {
 //   if (err) {
@@ -85,7 +102,7 @@ const __dirname = dirname(__filename);
 
 //   log("File appended successfully using join.");
 // });
- 
+
 // // remove using join
 // rm(join(__dirname, "message.txt"), (err) => {
 //   if (err) {
