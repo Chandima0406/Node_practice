@@ -1,6 +1,6 @@
 import { log, error } from "node:console";
 //import { appendFile, readFile, rm } from "node:fs";
-import { readFile, appendFile, rmdir, writeFile } from "node:fs/promises";
+import { readFile, appendFile, rm, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 //import { writeFile } from "node:fs";
@@ -11,31 +11,40 @@ const __dirname = dirname(__filename);
 
 /// promise API example
 // readFile
-readFile(join(__dirname, "read.txt"), { encoding: "utf-8" })
-  .then((data) => {
-    log("File content:", data);
-  })
-  .catch((err) => {
-    error(err);
-  });
+// readFile(join(__dirname, "read.txt"), { encoding: "utf-8" })
+//   .then((data) => {
+//     log("File content:", data);
+//   })
+//   .catch((err) => {
+//     error(err);
+//   });
 
-  // appendFile
-  appendFile(join(__dirname, "append.txt"), "Hello Node.js", { encoding: "utf-8" })
-    .then(() => {
-      log("File appended successfully.");
-    })
-    .catch((err) => {
-      error(err);
-    });
+//   // appendFile
+//   appendFile(join(__dirname, "append.txt"), "Hello Node.js", { encoding: "utf-8" })
+//     .then(() => {
+//       log("File appended successfully.");
+//     })
+//     .catch((err) => {
+//       error(err);
+//     });
 
-  //writeFile
-  writeFile(join(__dirname, "write.txt"), "Hello Node.js", { encoding: "utf-8" })
-    .then(() => {
-      log("File written successfully.");
-    })
-    .catch((err) => {
-      error(err);
-    });
+//   //writeFile
+//   writeFile(join(__dirname, "write.txt"), "Hello Node.js", { encoding: "utf-8" })
+//     .then(() => {
+//       log("File written successfully.");
+//     })
+//     .catch((err) => {
+//       error(err);
+//     });
+
+    // remove using rm
+    rm(join(__dirname, "myname.txt"))
+      .then(() => {
+        log("File removed successfully.");
+      })
+      .catch((err) => {
+        log("error remove file:", err);
+      });
 
 /////// callcack API example
 // readFile, writeFile, appendFile, rm
