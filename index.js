@@ -1,31 +1,55 @@
-import { log, error } from "node:console";
-import { appendFile, readFile, rm, readFileSync, writeFileSync, appendFileSync, rmSync } from "node:fs";
-// import { readFile, appendFile, rm, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-//import { writeFile } from "node:fs";
-import { Buffer } from "buffer";
+import { log } from "console";
+import fileRead from "./libs/readfile.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
-/////////////////// sync Api
-// readFileSync
-const data = readFileSync(join(__dirname, "read.txt"), { encoding: "utf-8" });
-log(data);
-
-// writeFilesync
-writeFileSync(join(__dirname, "message.txt"), "Hello sri lanka", {
-encoding: "utf-8",
+fileRead("message.txt", (d) => {
+  const whattodo = String(d).split(" ");
+  log(whattodo[whattodo.length - 1]);
 });
 
-// appendFileSync
-appendFileSync(join(__dirname, "message.txt"), "\nHello chandima!", {
-  encoding: "utf-8",
-});
 
-//rm using sync
-rmSync(join(__dirname, "write.txt"), );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { log, error } from "node:console";
+// import { appendFile, readFile, rm, readFileSync, writeFileSync, appendFileSync, rmSync } from "node:fs";
+// // import { readFile, appendFile, rm, writeFile } from "node:fs/promises";
+// import { dirname, join } from "node:path";
+// import { fileURLToPath } from "node:url";
+// //import { writeFile } from "node:fs";
+// import { Buffer } from "buffer";
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
+
+// /////////////////// sync Api
+// // readFileSync
+// const data = readFileSync(join(__dirname, "read.txt"), { encoding: "utf-8" });
+// log(data);
+
+// // writeFilesync
+// writeFileSync(join(__dirname, "message.txt"), "Hello sri lanka", {
+// encoding: "utf-8",
+// });
+
+// // appendFileSync
+// appendFileSync(join(__dirname, "abcd.txt"), "\nHello chandima!", {
+//   encoding: "utf-8",
+// });
+
+// //rm using sync
+// rmSync(join(__dirname, "abcd.txt"), );
 
 ////////////////// promise API example
 // readFile
