@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const fileWrite = (path, content, yourfunction = () => {}) => {
-  writeFile(join(__dirname, path), content, { encoding: "utf-8" }, (err) => {
+  writeFile(join(__dirname, `../${path}`), content, { encoding: "utf-8" }, (err) => {
     if (!err) {
       yourfunction("File written successfully.");
     }

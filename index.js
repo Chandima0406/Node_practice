@@ -1,10 +1,17 @@
 import { log } from "console";
 import fileRead from "./libs/readfile.js";
+import fileWrite from "./libs/writefile.js";
 
 
 fileRead("message.txt", (d) => {
   const whattodo = String(d).split(" ");
-  log(whattodo[whattodo.length - 1]);
+  const command = whattodo[0];
+  const content = whattodo.slice(1, whattodo.length - 1).join("");
+  const file = whattodo[whattodo.length - 1];
+
+  if (command == "write") {
+    fileWrite(file, content, (d) => log(d));
+  }  
 });
 
 
